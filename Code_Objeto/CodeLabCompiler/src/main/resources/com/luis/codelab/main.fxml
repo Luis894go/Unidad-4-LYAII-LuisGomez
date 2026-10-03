@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?><?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.luis.codelab.Controller" styleClass="rootPane">
+    <top>
+        <VBox>
+            <HBox styleClass="header" alignment="CENTER_LEFT">
+                <VBox HBox.hgrow="ALWAYS">
+                    <Label text="CODE OBJECT" styleClass="brand"/>
+                    <Label text="Unidad 4 • Generación de código objeto" styleClass="subtitle"/>
+                </VBox>
+                <Label text="Lenguajes y Autómatas II" styleClass="badge"/>
+            </HBox>
+            <HBox spacing="10" styleClass="toolbar">
+                <Button text="▶ COMPILAR" onAction="#compile" styleClass="primary"/>
+                <Button text="Ejemplo correcto" onAction="#loadExample"/>
+                <Button text="Prueba con errores" onAction="#loadErrorExample"/>
+                <Button text="Limpiar" onAction="#clear"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.37">
+            <VBox spacing="8" styleClass="panel">
+                <Label text="CÓDIGO FUENTE" styleClass="section"/>
+                <TextArea fx:id="source" VBox.vgrow="ALWAYS" styleClass="editor" wrapText="false"/>
+            </VBox>
+            <VBox spacing="8" styleClass="panel">
+                <Label text="PROCESO DE TRADUCCIÓN" styleClass="section"/>
+                <TabPane VBox.vgrow="ALWAYS">
+                    <Tab text="Análisis" closable="false">
+                        <SplitPane orientation="VERTICAL" dividerPositions="0.5">
+                            <TextArea fx:id="tokens" editable="false"/>
+                            <TextArea fx:id="intermediate" editable="false"/>
+                        </SplitPane>
+                    </Tab>
+                    <Tab text="Símbolos" closable="false">
+                        <TableView fx:id="symbols">
+                            <columns>
+                                <TableColumn fx:id="nameCol" text="Variable" prefWidth="150"/>
+                                <TableColumn fx:id="typeCol" text="Tipo" prefWidth="100"/>
+                                <TableColumn fx:id="valueCol" text="Valor / expresión" prefWidth="300"/>
+                            </columns>
+                        </TableView>
+                    </Tab>
+                    <Tab text="4.1 Registros" closable="false">
+                        <TextArea fx:id="registers" editable="false"/>
+                    </Tab>
+                    <Tab text="4.2 Ensamblador" closable="false">
+                        <TextArea fx:id="assembly" editable="false"/>
+                    </Tab>
+                    <Tab text="4.3 Máquina" closable="false">
+                        <TextArea fx:id="machine" editable="false" wrapText="false"/>
+                    </Tab>
+                    <Tab text="4.4 Memoria" closable="false">
+                        <TextArea fx:id="memory" editable="false"/>
+                    </Tab>
+                    <Tab text="Errores" closable="false">
+                        <TextArea fx:id="errors" editable="false" wrapText="true"/>
+                    </Tab>
+                </TabPane>
+            </VBox>
+        </SplitPane>
+    </center>
+    <bottom>
+        <HBox styleClass="footer">
+            <Label text="Código fuente  →  análisis  →  registros  →  ensamblador  →  lenguaje máquina  →  memoria"/>
+        </HBox>
+    </bottom>
+</BorderPane>
